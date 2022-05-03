@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertube/api.dart';
 import 'package:fluttertube/view/home/home.dart';
 
 void main() {
+  Api api = Api();
+  api.search("Lucas");
   runApp(const MyApp());
 }
 

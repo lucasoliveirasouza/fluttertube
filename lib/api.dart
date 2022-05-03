@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fluttertube/models/video.dart';
 import 'package:http/http.dart' as http;
 
 const API_KEY = "AIzaSyDcMaGK3npChAIeIUvx5K1ht7QWxritMoQ";
@@ -20,6 +21,10 @@ class Api {
   decode(http.Response response) {
     if (response.statusCode == 200) {
       var decoded = json.decode(response.body);
+      List<Video> videos = decoded["items"].map<Video>((map) {
+        return Video.fromJson(map);
+      }).toList;
+      print(videos);
     }
   }
 }
