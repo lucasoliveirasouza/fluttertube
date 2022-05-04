@@ -6,33 +6,22 @@ import 'package:http/http.dart' as http;
 const API_KEY = "AIzaSyDcMaGK3npChAIeIUvx5K1ht7QWxritMoQ";
 
 class Api {
-  final headers = <String, String>{};
+  List<Video> videos = [];
 
   search(String search) async {
-    http.Response response = await attemptRequest1(
-        Uri.parse(
-            "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10"),
-        http.get,
-        headers: headers);
+    String uri =
+        "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10";
+    final response = await http.get(Uri.parse(uri));
 
-    decode(response);
-  }
-
-  decode(http.Response response) {
     if (response.statusCode == 200) {
-      var decoded = json.decode(response.body);
-      List<Video> videos = decoded["items"].map<Video>((map) {
-        return Video.fromJson(map);
-      }).toList;
-      print(videos);
-    }
-  }
-}
+      final json = jsonDecode(response.body);
 
-Future<http.Response> attemptRequest1(
-    Uri uri,
-    Future<http.Response> Function(Uri, {Map<String, String>? headers})
-        requestFunction1,
-    {Map<String, String>? headers}) async {
-  return await requestFunction1(uri, headers: headers);
+      final List<dynamic> lista = json["items"];
+
+      lista.forEach((video) {
+        print(video["snippet"]["title"]);
+      });
+    }
+    print(videos.length);
+  }
 }
