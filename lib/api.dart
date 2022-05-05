@@ -19,7 +19,13 @@ class Api {
       final List<dynamic> lista = json["items"];
 
       lista.forEach((video) {
-        print(video["snippet"]["title"]);
+        Video vd = Video(
+          id: video["id"]["videoId"],
+          title: video["snippet"]["title"],
+          thumb: video["snippet"]["thumbnails"]["high"]["url"],
+          channel: video["snippet"]["channelTitle"],
+        );
+        videos.add(vd);
       });
     }
     print(videos.length);
