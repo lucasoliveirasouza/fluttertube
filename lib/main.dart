@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertube/api.dart';
+import 'package:fluttertube/services/video_service.dart';
 import 'package:fluttertube/view/home/home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  Api api = Api();
-  api.search("Lucas");
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => VideoService()),
+    ],
+    child: MyApp(),
+  ));
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

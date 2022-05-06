@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
-import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:fluttertube/api.dart';
 import 'package:fluttertube/models/video.dart';
 
-class VideosBloc implements BlocBase {
+/*class VideosBloc implements BlocBase {
   late Api api;
 
   List<Video> videos = [];
@@ -52,4 +51,4 @@ class VideosBloc implements BlocBase {
   void removeListener(VoidCallback listener) {
     // TODO: implement removeListener
   }
-}
+}*/

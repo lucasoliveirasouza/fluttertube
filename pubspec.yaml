@@ -22,9 +22,10 @@ dependencies:
   flutter_youtube_view: ^2.0.3
   ext_video_player: ^0.1.2
   http: ^0.13.4
+  provider: ^6.0.2
   shared_preferences: ^2.0.13
   rxdart: ^0.27.3
-  bloc_pattern: ^3.0.0+1
+
 
 dev_dependencies:
   flutter_test:
