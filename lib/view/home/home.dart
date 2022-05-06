@@ -37,6 +37,7 @@ class _HomeViewState extends State<HomeView> {
 
               if (result != "") {
                 Provider.of<VideoService>(context).search(result!);
+
               }
             },
             icon: Icon(Icons.search),

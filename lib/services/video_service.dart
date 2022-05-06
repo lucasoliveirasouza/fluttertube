@@ -13,7 +13,9 @@ class VideoService extends ChangeNotifier {
   List<Video> _videos= [];
 
   UnmodifiableListView<Video> get videoss => UnmodifiableListView(_videos);
-
+  VideoService(){
+    search("Lucas");
+  }
   search(String search) async {
     String uri =
         "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=$API_KEY&maxResults=10";
@@ -21,7 +23,7 @@ class VideoService extends ChangeNotifier {
 
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body);
-
+      print("Entrei");
       final List<dynamic> lista = json["items"];
 
       lista.forEach((video) {
